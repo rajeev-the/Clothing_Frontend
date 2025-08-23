@@ -15,7 +15,7 @@ const SectionHome1 = () => {
     {/* Left big image */}
     <Link to={"/women"} className="relative w-full md:w-[70%] rounded-2xl overflow-hidden max-h-[600px]">
       <img
-        src={heroImg}
+        src="https://ik.imagekit.io/wwa3eee1kw/young-people-standing-looking-different-direction.jpg"
         alt="Main Visual"
         className="w-full h-full object-cover rounded-2xl"
       />
@@ -46,7 +46,7 @@ const SectionHome1 = () => {
   to="/men"
   className="relative overflow-hidden rounded-2xl sm:w-full w-[40%] h-[240px] sm:h-[260px] text-white
              bg-[#1B2559] bg-no-repeat bg-cover bg-right"
-  style={{ backgroundImage: `url(${secondImg})` }}
+  style={{ backgroundImage: `url(https://ik.imagekit.io/wwa3eee1kw/portrait-fashionable-boy-against-blue-wall%20(2).jpg?updatedAt=1755976264790)` }}
   aria-label="Naturally Styled"
 >
   {/* Bottom gradient for contrast */}
@@ -65,7 +65,7 @@ const SectionHome1 = () => {
     <Link
   to="/men"
   className="relative overflow-hidden rounded-2xl h-[240px] w-[60%] sm:w-full sm:h-[325px] text-white bg-[#1B2559] bg-no-repeat bg-cover bg-center md:bg-right"
-  style={{ backgroundImage: `url(${firstImg})` }}
+  style={{ backgroundImage: `url(https://ik.imagekit.io/wwa3eee1kw/woman-with-shopping-bags-studio-yellow-background-isolated.jpg)` }}
   aria-label="Casual Comfort"
 >
   {/* Bottom fade for contrast */}
