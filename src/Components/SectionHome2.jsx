@@ -26,7 +26,7 @@ const SectionHome2 = () => {
 
   return (
     <section className="mt-[100px] sm:mt-10 px-4 md:px-8 lg:px-16">
-      <h1 className="text-3xl text-white text-center font-semibold">Shop Now</h1>
+      <h1 className="text-3xl text-[#02066F] text-center font-semibold">Shop Now</h1>
 
       {loading ? (
         <Loading />

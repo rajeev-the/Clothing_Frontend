@@ -64,7 +64,7 @@ const App = () => {
                   <Route  path='/corporate' element={<Prodcuts/>}/>
               <Route  path='/contact' element={<Contact/>}/>
                 <Route  path='/cart' element={<Cart/>}/>
-                <Route  path='/products/:id' element={<ProductRouter/>}/>
+                <Route  path='/products/:id' element={<ProductPage/>}/>
                   <Route  path='/getbulk' element={<GetBulk/>}/>
                      <Route  path='/order' element={<Order/>}/>
                       <Route  path='/design/:proid/:color' element={<TShirtDesigner/>}/>

@@ -95,13 +95,14 @@ const MobileSidebar = ({ menuItems, setMobileMenuOpen, mobileMenuOpen }) => {
 
       {/* MAIN SIDEBAR */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-black text-white z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-full  bg-[#1B2559] text-[#FFFFFF] z-50 transform transition-transform duration-300 ${
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Header */}
         <div className="flex justify-between items-center px-4 py-4 border-b border-white/20">
-          <img ref={imageRef} src={logo} alt="Logo" className="h-8 w-auto" />
+          {/* <img ref={imageRef} src={logo} alt="Logo" className="h-8 w-auto" /> */}
+          <h2 className='text-2xl'>Xoutfit</h2>
           <FiX onClick={() => setMobileMenuOpen(false)} className="text-2xl cursor-pointer" />
         </div>
 
@@ -131,7 +132,7 @@ const MobileSidebar = ({ menuItems, setMobileMenuOpen, mobileMenuOpen }) => {
 
         {/* RIGHT-SIDE SHEET: shows API subcategories */}
         <div
-          className={`fixed top-0 right-0 h-full w-full sm:w-[85%] bg-white z-50 transform transition-transform duration-300 ${
+          className={`fixed top-0 right-0 h-full w-full sm:w-[85%] bg-[#FFFFFF] z-50 transform transition-transform duration-300 ${
             openMegaFor ? "translate-x-0" : "translate-x-full"
           }`}
         >

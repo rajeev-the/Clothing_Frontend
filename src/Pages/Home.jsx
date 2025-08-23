@@ -35,7 +35,7 @@ useEffect(() => {
 
 
   return (
-    <div className='h-full bg-[#0A0A0A] w-full  '>
+    <div className='h-full  w-full  '>
         <SectionHome1/>
         < SectionHome2 />
           < TrendingHome/>

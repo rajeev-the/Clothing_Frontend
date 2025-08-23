@@ -21,14 +21,18 @@ const SectionHome1 = () => {
       />
 
       {/* Text Overlay */}
-      <div className="absolute top-8 left-6 z-10 text-white">
-        <p className="text-4xl md:text-6xl font-semibold leading-tight md:leading-[3.2rem]">
-          Color Of <br /> Summer <br /> Outfit
-        </p>
-        <button className="mt-4 px-6 py-2 bg-[#E5C870] text-black rounded-full shadow-lg text-sm md:text-base">
-          Shop the Look →
-        </button>
-      </div>
+     {/* Centered Text Overlay */}
+<div className="absolute inset-0 z-10 flex items-center justify-center">
+  <div className="text-white text-center px-6 md:px-10">
+    <p className="text-2xl sm:text-5xl md:text-6xl font-semibold leading-tight md:leading-[3.2rem]">
+      Color Of  Summer  Outfit
+    </p>
+    <button className="mt-4 sm:px-6 sm:py-2 py-2 px-4 bg-[#E5C870] text-[#02066F] rounded-full shadow-lg text-sm md:text-base">
+      Shop the Look →
+    </button>
+  </div>
+</div>
+
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/30 z-0 rounded-2xl" />
@@ -37,34 +41,51 @@ const SectionHome1 = () => {
     {/* Right stacked cards */}
     <div className="flex sm:flex-col  flex-row sm:gap-3 gap-2 w-full md:w-[30%]">
       {/* Card 1 */}
-      <Link to={"/men"} className="bg-[#3a3a3a] text-[#E5C870] sm:p-6 px-2  rounded-2xl relative sm:w-full w-[40%]  h-[240px] sm:h-[260px]">
-        <p className="text-2xl sm:text-5xl font-semibold sm:leading-10  leading-6 mt-[40px] z-10 relative">
-          Naturally<br />Styled
-        </p>
-        <img
-          src={secondImg}
-          alt="Styled Model"
-          className="object-contain absolute bottom-0 right-4 sm:w-[140px] w-[100px]"
-        />
-      </Link>
+     {/* Card 1 (background image) */}
+<Link
+  to="/men"
+  className="relative overflow-hidden rounded-2xl sm:w-full w-[40%] h-[240px] sm:h-[260px] text-white
+             bg-[#1B2559] bg-no-repeat bg-cover bg-right"
+  style={{ backgroundImage: `url(${secondImg})` }}
+  aria-label="Naturally Styled"
+>
+  {/* Bottom gradient for contrast */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2559]/80 via-[#1B2559]/30 to-transparent" />
+
+  {/* Bottom text */}
+  <div className="absolute inset-0 z-10 flex items-end">
+    <p className="w-full px-4 sm:px-6 pb-4 sm:pb-6 text-2xl sm:text-5xl font-semibold leading-6 sm:leading-[2.75rem] drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]">
+      Naturally<br />Styled
+    </p>
+  </div>
+</Link>
+
 
       {/* Card 2 */}
-      <Link to={"/men"} className="bg-[#e2c565] text-black sm:p-6 px-2 rounded-2xl relative h-[240px] w-[60%] sm:w-full sm:h-[325px] overflow-hidden">
-        <h2 className="text-3xl sm:text-5xl font-semibold leading-10 mt-[40px] z-10 relative">
-          Casual <br /> Comfort
-        </h2>
-        <img
-          src={firstImg}
-          alt="Casual Comfort"
-          className="absolute bottom-0 right-4 sm:w-[140px] w-[100px]  object-contain"
-        />
-      </Link>
+    <Link
+  to="/men"
+  className="relative overflow-hidden rounded-2xl h-[240px] w-[60%] sm:w-full sm:h-[325px] text-white bg-[#1B2559] bg-no-repeat bg-cover bg-center md:bg-right"
+  style={{ backgroundImage: `url(${firstImg})` }}
+  aria-label="Casual Comfort"
+>
+  {/* Bottom fade for contrast */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2559]/85 via-[#1B2559]/40 to-transparent" />
+
+  {/* Text block pinned bottom-left */}
+  <div className="absolute inset-0 flex items-end">
+    <h2 className="z-10 px-4 sm:px-6 pb-4 sm:pb-6 text-3xl sm:text-5xl font-semibold leading-[1.15]">
+      Casual <br /> Comfort
+    </h2>
+  </div>
+</Link>
+
+
     </div>
   </div>
 
   {/* Scroll Down Button */}
   <div className=" absolute md:bottom-[-36px] sm:right-12  right-4 mt-2 md:transform md:-translate-x-1/2 flex justify-center">
-    <button className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl text-black font-semibold text-sm shadow hover:shadow-md transition duration-300">
+    <button className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl text-black font-semibold text-sm border shadow hover:shadow-md transition duration-300">
       Scroll Down
       <svg
         xmlns="http://www.w3.org/2000/svg"

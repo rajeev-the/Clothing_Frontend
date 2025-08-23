@@ -15,7 +15,7 @@ const SectionHome3 = () => {
     <div className='flex flex-col w-full md:w-[75%] gap-3'>
 
       {/* Top Box */}
-      <div className='bg-white rounded-xl  flex flex-col sm:flex-row items-center justify-between h-full shadow-sm relative'>
+      <div className='bg-[#1B2559]  text-[#FFFFFF] rounded-xl  flex flex-col sm:flex-row items-center justify-between h-full shadow-sm relative'>
 
         {/* Text */}
         <div className="flex flex-col px-6 justify-center  sm:mr-0 mr-[135px]  text-left  ">
@@ -36,7 +36,7 @@ const SectionHome3 = () => {
       </div>
 
       {/* Bottom Box */}
-      <div className='bg-white rounded-xl  flex flex-col sm:flex-row items-center justify-between h-full shadow-sm relative'>
+      <div className='bg-[#1B2559] text-[#FFFFFF] rounded-xl  flex flex-col sm:flex-row items-center justify-between h-full shadow-sm relative'>
 
         {/* Text */}
         <div className="flex flex-col text-left px-4   sm:mr-0 mr-[160px] sm:text-left">
@@ -60,7 +60,7 @@ const SectionHome3 = () => {
     </div>
 
     {/* RIGHT COLUMN */}
-    <div className='w-full md:w-[25%] bg-white rounded-xl  shadow-sm flex flex-col justify-between relative'>
+    <div className='w-full md:w-[25%] bg-[#1B2559] text-[#FFFFFF] rounded-xl  shadow-sm flex flex-col justify-between relative'>
 
       {/* Text */}
       <div className='w-full  p-4'>

@@ -16,7 +16,7 @@ const BoxOfProdcuts = ({ price ,title ,id ,image }) => {
 }
 
   return (
-    <Link to={`/products/${id}`} className="w-full max-w-sm bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+    <Link to={`/products/${id}`} className="w-full max-w-sm bg-[#F6F8FF] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out">
       {/* Image & Color Swatches */}
       <div className="relative bg-[#F9F5EB]  flex justify-center items-end rounded-t-3xl">
         {/* Color Circles */}

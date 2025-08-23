@@ -16,7 +16,7 @@ const Layout = () => {
 
   return (
     <>
-      <div className='min-h-screen w-full bg-[#0A0A0A] montserrat-light relative'>
+      <div className='min-h-screen w-full bg-[#F6F8FF] montserrat-light relative'>
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E5C870] to-transparent"></div>
         
         {/* Pass down states to Navbar if needed */}

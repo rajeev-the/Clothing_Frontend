@@ -11,7 +11,7 @@ import MobileSidebar from './MobileSidebar';
     { name: "Men", link: "/men", hasMegaMenu: true ,isbold:true},
     { name: "Women", link: "/women", hasMegaMenu: true ,isbold:true},
     { name: "Kid", link: "/kid", hasMegaMenu: true ,isbold:true},
-    { name: "Corporate", link: "/corporate" ,hasMegaMenu: true,isbold:true}
+    { name: "Order", link: "/order" ,isbold:true}
   ];
 
   const menuItemss = [
@@ -19,7 +19,6 @@ import MobileSidebar from './MobileSidebar';
   { name: "Men",   megaCategory: "Men" },    // dropdown fetched from API
   { name: "Women", megaCategory: "Women" },  // dropdown fetched from API
   { name: "Kids",  megaCategory: "Kids" },
-  { name: "Corporate",  megaCategory: "Corporate T-shirt" },
      // dropdown fetched from API
 
 ];
@@ -42,7 +41,7 @@ const [islineclick, setIslineClick] = useState("home");
 
   return (
    <>
-      <nav className="w-full flex sm:items-center sm:justify-center sm:gap-[250px] gap-[180px] items-center justify-evenly sm:px-6 py-4 bg-[#0A0A0A] text-white font-semibold">
+      <nav className="w-full flex sm:items-center sm:justify-center sm:gap-[250px] gap-[180px] items-center justify-evenly sm:px-6 py-4 bg-[#1B2559] text-white font-semibold">
         
         {/* Left Nav */}
         <div className="hidden md:flex items-center gap-6 text-sm">
@@ -87,7 +86,8 @@ const [islineclick, setIslineClick] = useState("home");
 
         {/* Center Logo */}
         <div className="flex-shrink-0">
-          <img src={logo} alt="DUCO ART Logo" className="h-6 object-contain" />
+          {/* <img src={logo} alt="DUCO ART Logo" className="h-6 object-contain" /> */}
+          <h2 className='text-2xl'>Xoutfit</h2>
         </div>
 
         {/* Right Section */}
@@ -140,7 +140,7 @@ const [islineclick, setIslineClick] = useState("home");
       </nav>
 
       {/* Mobile Search */}
-      <div className="md:hidden mt-2 relative flex items-center gap-2 px-2 py-1">
+      <div className="md:hidden bg-[#1B2559]  relative flex items-center gap-2 px-2 py-1">
         <FaSearch className="text-white" />
         <input
           type="text"
