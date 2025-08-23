@@ -15,8 +15,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Duco T-shirt Store',
-        short_name: 'Duco',
+        name: 'T-shirt Store',
+        short_name: 'Cloths',
         description: 'Premium custom T-shirt design and ordering platform.',
         theme_color: '#E5C870',
         background_color: '#0A0A0A',

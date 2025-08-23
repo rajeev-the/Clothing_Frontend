@@ -6,14 +6,9 @@ import BoxOfProdcuts from '../Components/BoxOfProdcuts';
 
 
 
-import watchphoto from '../assets/gloomy-young-black-model-clean-white-unlabeled-cotton-t-shirt-removebg-preview.png'
 
 
-const sampleProduct = {
-  id: "1",
-  name: "Noise Icon '2.1' Display with Bluetooth Calling",
-  image: watchphoto,
-};
+
 
 const Order = () => {
 
