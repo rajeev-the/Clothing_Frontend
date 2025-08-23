@@ -56,7 +56,7 @@ useEffect(() => {
 
                    <section className="mt-5">
   <div>
-    <h3 className="text-start font-bold text-white text-2xl">Related Products</h3>
+    <h3 className="text-start font-bold text-[#02066F] text-2xl">Related Products</h3>
 
     <div className="mt-5 overflow-x-auto  scrollbar-none [&::-webkit-scrollbar]:hidden">
       <div className="flex gap-4 w-max">
