@@ -40,7 +40,7 @@ useEffect(() => {
   <div className='w-full h-full p-10'>
      
      <div className='mb-7  '> 
-       <FaShoppingBag  size={40}  className="text-white text-xl cursor-pointer" /> 
+       <FaShoppingBag  size={40}  className="text-[#02066F] text-xl cursor-pointer" /> 
       
      </div>
       
