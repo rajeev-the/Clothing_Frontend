@@ -64,7 +64,7 @@ const AddressManager = ({ addresss,setAddresss,user, setUser }) => {
 
   return (
     <div className="w-full mt-6 border-t border-gray-700 pt-4">
-      <h3 className="text-lg font-semibold mb-2 text-[#E5C870]">Saved Addresses</h3>
+      <h3 className="text-lg font-semibold mb-2 text-[#1B2559]">Saved Addresses</h3>
       {user?.address && user.address?.length > 0 ? (
         <ul className="space-y-2 text-sm">
     {user?.address?.map((addr, index) => {
@@ -73,8 +73,8 @@ const AddressManager = ({ addresss,setAddresss,user, setUser }) => {
         <li
           onClick={() => setAddresss(addr)}
           key={index}
-          className={`p-3 rounded-lg border text-white cursor-pointer transition 
-            ${isSelected ? 'border-yellow-400 bg-gray-700' : 'border-gray-700 bg-gray-800 hover:bg-gray-700'}`}
+          className={`p-3 rounded-lg border-4 text-white cursor-pointer transition 
+            ${isSelected ? 'border-yellow-400 bg-gray-700' : 'border-gray-700 bg-[#1B2559] hover:bg-gray-700'}`}
         >
           <p className="font-semibold text-white">
             {addr.fullName} ({addr.addressType})
@@ -91,7 +91,7 @@ const AddressManager = ({ addresss,setAddresss,user, setUser }) => {
       )}
 
       {/* Add Address Form */}
-      <h3 className="text-lg font-semibold text-[#E5C870] mt-6 mb-2">Add New Address</h3>
+      <h3 className="text-lg font-semibold text-[#1B2559] mt-6 mb-2">Add New Address</h3>
 
       <div className="grid grid-cols-2 gap-2 text-sm">
         <input name="fullName" placeholder="Full Name" value={address.fullName} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />

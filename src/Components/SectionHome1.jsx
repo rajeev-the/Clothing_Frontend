@@ -42,9 +42,11 @@ const SectionHome1 = () => {
      {/* Card 1 (background image) */}
 <Link
   to="/men"
-  className="relative overflow-hidden rounded-2xl sm:w-full w-[40%] h-[240px] sm:h-[260px] text-white
-             bg-[#1B2559] bg-no-repeat bg-cover bg-right"
-  style={{ backgroundImage: `url(https://ik.imagekit.io/wwa3eee1kw/portrait-fashionable-boy-against-blue-wall%20(2).jpg?updatedAt=1755976264790)` }}
+  className="relative  rounded-2xl sm:w-full w-[40%] h-[240px] sm:h-[260px] text-white bg-no-repeat bg-cover bg-center md:bg-right"
+  style={{
+    backgroundImage:
+      "url(https://ik.imagekit.io/wwa3eee1kw/pohotojgot.jpg?updatedAt=1755978312092)"
+  }}
   aria-label="Naturally Styled"
 >
   {/* Bottom gradient for contrast */}
@@ -57,6 +59,7 @@ const SectionHome1 = () => {
     </p>
   </div>
 </Link>
+
 
 
       {/* Card 2 */}

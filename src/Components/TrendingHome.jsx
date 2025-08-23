@@ -28,8 +28,8 @@ const TrendingHome = () => {
   return (
     <section className="mt-[100px] sm:mt-10 px-4 md:px-8 lg:px-16">
         <div className='flex  justify-center  items-center'>
-            <h1 className="text-2xl text-white  font-semibold">Trending Clothing </h1>
-            <h1 className="text-2xl text-white  font-semibold"><HiOutlineTrendingUp/></h1>
+            <h1 className="text-2xl text-[#1B2559]  font-semibold">Trending Clothing </h1>
+            <h1 className="text-2xl text-[#1B2559]  font-semibold"><HiOutlineTrendingUp/></h1>
 
            
 

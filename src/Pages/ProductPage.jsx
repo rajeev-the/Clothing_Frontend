@@ -3,30 +3,22 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { MdOutlinePrint, MdOutlineColorLens, MdOutlineStraighten } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchPreviousDesigns, getproductssingle ,fetchPreviousDesignswithpreoduts} from '../Service/APIservice';
-import DesignPreviewModal from '../Components/DesignPreview';
 import { CartContext } from "../ContextAPI/CartContext";
 import { usePriceContext } from '../ContextAPI/PriceContext';
 import Zoom from 'react-medium-image-zoom';
 import { toast } from "react-toastify";
 import 'react-medium-image-zoom/dist/styles.css';
 import { useOutletContext } from 'react-router-dom';
-import PriceTiers from '../Components/PriceTiers';
-import CropTanksTabs from '../Components/CropTanksTabs';
 import CropTankSizeChart from '../Components/CropTankSizeChart';
-
+import Rating from '../Components/Rating';
+import LoadingMain from "../Components/LoadingMain";
 
 function useLayoutCtx() {
   return useOutletContext(); // { setIsOpenLog, isLogin, setIsLogin, login, user }
 }
-const PRICE_TIERS = [
-  { range: "1", price: 510 },
-  { range: "2 - 4", price: 467 },
-  { range: "5 - 10", price: 408, recommended: true },
-  { range: "11 - 20", price: 380 },
-  { range: "21 - 50", price: 371 },
-];
 
 const ProductPage = () => {
+    const [loading, setLoading] = useState(true);
     const { setIsOpenLog } = useLayoutCtx();
   const [selectedColorCode, setSelectedColorCode] = useState('');
   const [selectedSize, setSelectedSize] = useState('M');
@@ -42,7 +34,7 @@ const ProductPage = () => {
   const [product, setProduct] = useState();
   const [defaultColorGroup, setDefaultColorGroup] = useState(null);
   const [designs, setDesigns] = useState([]);
-  const [loadingDesigns, setLoadingDesigns] = useState(false);
+
   const { addtocart } = useContext(CartContext);
   const { id } = useParams();
     const SIZES = ["S", "M", "L", "XL", "2XL", "3XL"];
@@ -66,6 +58,7 @@ const ProductPage = () => {
         setColortext(p.image_url?.[0]?.color)
          setPrice(calculatePrice(toConvert,p?.pricing?.[0]?.price_per,priceIncrease))
          setGender(p.gender)
+         setLoading(false)
 
       }
       if(!priceIncrease){
@@ -127,6 +120,7 @@ const handleQty = (k, v) => {
 
 
   return (
+    loading ? <LoadingMain /> :
     <section className="p-6 text-[#1B2559] ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         {/* Left - Images */}
@@ -160,14 +154,7 @@ const handleQty = (k, v) => {
         <div className="space-y-6">
           <h1 className="text-3xl font-bold text-[#E5C870]">{product?.products_name}</h1>
           <p className="text-2xl font-semibold">₹{price}</p>
-
-          <button
-            onClick={() => navigate("/getbulk")}
-            className="bg-[#E5C870] hover:bg-green-600 text-[#FFFFFF] font-bold px-4 py-2 rounded"
-          >
-            Get Your Free Bulk Quote
-          </button>
-
+                <Rating/>
           <ul className="grid grid-cols-2 gap-1 text-sm text-[#1B2559]">
             <li><FaCheckCircle className="inline mr-1 text-green-600" />180 GSM</li>
             <li><FaCheckCircle className="inline mr-1 text-green-600" />100% Cotton</li>
@@ -213,7 +200,7 @@ const handleQty = (k, v) => {
             <h3 className="font-semibold mb-2 flex items-center gap-2">
               <MdOutlineStraighten /> Available Sizes
             </h3>
-          <div className="flex text-white flex-wrap gap-3 mt-2">
+          <div className="flex text-[#1B2559] flex-wrap gap-3 mt-2">
   {SIZES.map((s) => (
     <label key={s} className="flex flex-col items-center gap-1">
       <span className="text-sm text-[#1B2559]">{s}</span>
@@ -255,7 +242,7 @@ const handleQty = (k, v) => {
               }
             }
             }
-            className="bg-[#E5C870] hover:bg-green-600 text-[#FFFFFF] w-full text-xl font-bold py-3 rounded"
+            className="bg-[#1B2559] hover:bg-green-600 text-[#FFFFFF] w-full text-xl font-bold py-3 rounded"
           >
             Start Buying
           </button>
@@ -264,9 +251,9 @@ const handleQty = (k, v) => {
        
 
       </div>
-       <PriceTiers tiers={PRICE_TIERS} currencySymbol="₹" />
+    
         <CropTankSizeChart/>
-       <CropTanksTabs/>
+       
       
 
 

@@ -36,24 +36,24 @@ useEffect(() => {
 console.log(prodcuts)
 
   return (
-   <div className=" text-white min-h-screen p-4">
+   <div className=" text-[] min-h-screen p-4">
       {/* Breadcrumb */}
       
 
       {/* Heading and product count */}
-      <div className="flex justify-between items-center mb-2">
-       <span className="text-white text-2xl">{catogory_name}</span>
-        <span className="text-gray-500">82 Products</span>
+      <div className="flex  justify-between items-center mb-2">
+       <span className="text-[#1B2559] text-2xl">{catogory_name}</span>
+        <span className="text-[#02066F] ">82 Products</span>
       </div>
 
       {/* Main content */}
       <div className="flex gap-6">
         {/* Filters */}
-        <aside className=" md:block hidden  w-1/5 space-y-6 ">
+        <aside className=" md:block hidden   w-1/5 space-y-6 ">
   
    
    
-    <hr className="border-t border-gray-100" />
+    <hr className="border-t border-3 border-[#1B2559]" />
     <div>
       <h2 className="font-semibold mb-2">Sizes</h2>
       <div className="space-y-1">
@@ -72,11 +72,11 @@ console.log(prodcuts)
         
 
           {/* Sort bar */}
-          <div className="flex    justify-between   mb-4">
-             <FaFilter />
+          <div className="flex    justify-end   mb-4">
+           
              <div>
-              <label className="text-sm mr-2">Sort by:</label>
-            <select className="border border-gray-300 rounded px-2 py-1  bg-black text-sm">
+              <label className="text-sm  text-white mr-2">Sort by:</label>
+            <select className="border  text-white border-[#02066F] rounded px-2 py-1  bg-[#1B2559] text-sm">
               <option>Popularity</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
@@ -92,14 +92,14 @@ console.log(prodcuts)
           {/* Product grid */}
            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6">
     {prodcuts?.map((item) => (
-      <Link to={`/products/${item._id}`} key={item} className="border rounded-xl overflow-hidden shadow-sm hover:shadow-md">
+      <Link to={`/products/${item._id}`} key={item} className="border  border-[#1B2559] bg-[#FFFFFF] shadow-md rounded-xl overflow-hidden  hover:shadow-xl transition">
         <div className="relative p-3">
           <img
             src={item.image_url[0]?.url[0]}
             alt="T-Shirt Design"
             className="w-[200px] bg-white  object-cover "
           />
-          <div className="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">Oversized Fit</div>
+          <div className="absolute top-2 left-2 bg-[#E5C870] text-[#02066F] text-xs px-2 py-1 rounded">Oversized Fit</div>
         </div>
         <div className="p-4">
           <h3 className="text-sm font-semibold">{item.products_name}</h3>

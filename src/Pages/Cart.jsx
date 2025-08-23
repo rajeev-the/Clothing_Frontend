@@ -94,7 +94,7 @@ const Cart = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="min-h-screen text-white p-8">
+    <div className="min-h-screen text-[#1B2559] p-8">
      
 
       <h1 className="text-3xl font-bold mb-8">SHOPPING CART</h1>
@@ -122,7 +122,7 @@ const Cart = () => {
 
         {/* Order Summary */}
         <div className="lg:w-96 flex flex-col">
-          <div className="lg:w-96 h-fit rounded-sm p-6" style={{ backgroundColor: '#112430' }}>
+          <div className="lg:w-96 h-fit rounded-sm p-6" style={{ backgroundColor: '#1B2559' }}>
             <h2 className="text-2xl font-bold mb-6 text-white">ORDER SUMMARY</h2>
 
             <div className="space-y-4 mb-8">
