@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const PaymentButton = ({ orderData }) => {
   const navigate = useNavigate();
-  const API_BASE = 'https://duco-backend.onrender.com/';
+  const API_BASE = 'https://cloth-backend-aciv.onrender.com/';
 
   // Load Razorpay checkout script
   const loadScript = (src) => {

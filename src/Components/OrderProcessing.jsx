@@ -6,7 +6,7 @@ const OrderProcessing = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { paymentId, orderData } = location.state || {};
-    const API_BASE = 'https://duco-backend.onrender.com/';
+    const API_BASE = 'https://cloth-backend-aciv.onrender.com/';
   useEffect(() => {
     if (!paymentId || !orderData) {
       navigate('/'); // Redirect if data missing

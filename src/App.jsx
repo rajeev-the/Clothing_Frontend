@@ -32,7 +32,7 @@ import
 TermsConditions from "./Pages/TermsConditions"
 import OrderProcessing  from "./Components/OrderProcessing.jsx"
 import OrderSection from "./Admin/OderSection.jsx"
-import SizeChange from './Pages/SizeChange.jsx';
+
 import AnalyticsDashboard from './Admin/AnalyticsDashboard.jsx';
 import ProductRouter from './Pages/ProductRouter.jsx';
 
@@ -76,7 +76,7 @@ const App = () => {
                             <Route path="/refund-return-policy" element={<RefundReturnPolicy />} />
                             <Route path="/shipping-policy" element={<ShippingPolicy />} />
                             <Route path="/terms-and-conditions" element={<TermsConditions />} />
-                             <Route path="/get_size/:id" element={<SizeChange />} />
+                            
 
 
 

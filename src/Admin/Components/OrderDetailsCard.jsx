@@ -10,7 +10,7 @@ const OrderDetailsCard = ({ orderId }) => {
   const handleStatusChange = async (newStatus) => {
     setOrder((prev) => ({ ...prev, status: newStatus }));
     try {
-      await fetch(`https://duco-backend.onrender.com/api/order/update/${orderId}`, {
+      await fetch(`https://cloth-backend-aciv.onrender.com/api/order/update/${orderId}`, {
         method:"PUT",
         headers:{"Content-Type": "application/json"},
         body: JSON.stringify({ status: newStatus }),
@@ -22,7 +22,7 @@ const OrderDetailsCard = ({ orderId }) => {
 const handleQlinkOrderIdChange = async (newId) => {
   setOrder(prev => ({ ...prev, qlinkOrderId: newId }));
   try {
-    await fetch(`https://duco-backend.onrender.com/api/order/update/${orderId}`, {
+    await fetch(`https://cloth-backend-aciv.onrender.com/api/order/update/${orderId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ qlinkOrderId: newId?.trim() || null }),
@@ -57,7 +57,7 @@ const handleQlinkOrderIdChange = async (newId) => {
     const fetchOrderDetails = async () => {
       try {
         // If your route is /api/orders/:id, change this accordingly:
-        const res = await fetch(`https://duco-backend.onrender.com/api/order/${orderId}`);
+        const res = await fetch(`https://cloth-backend-aciv.onrender.com/api/order/${orderId}`);
         const data = await res.json();
         setOrder(data);
       } catch (err) {

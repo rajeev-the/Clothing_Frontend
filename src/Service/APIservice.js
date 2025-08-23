@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = 'https://duco-backend.onrender.com/'; // Set if you have a different baseURL
+const API_BASE = 'https://cloth-backend-aciv.onrender.com/'; // Set if you have a different baseURL
 
 export const fetchAllPrices = async () => {
   const response = await axios.get(`${API_BASE}money/get_money`);
@@ -16,7 +16,7 @@ export const createOrUpdatePrice = async (data) => {
 
 export const fetchPreviousDesigns = async (userId) => {
   try {
-    const res = await fetch(`https://duco-backend.onrender.com/api/designs/user/${userId}`);
+    const res = await fetch(`https://cloth-backend-aciv.onrender.com/api/designs/user/${userId}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -26,7 +26,7 @@ export const fetchPreviousDesigns = async (userId) => {
 };
 export const fetchPreviousDesignswithpreoduts = async (userId,productId) => {
   try {
-    const res = await fetch(`https://duco-backend.onrender.com/api/designs/user/${userId}/${productId}`);
+    const res = await fetch(`https://cloth-backend-aciv.onrender.com/api/designs/user/${userId}/${productId}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -38,7 +38,7 @@ export const fetchPreviousDesignswithpreoduts = async (userId,productId) => {
 
 export const createDesign = async (payload) => {
   try {
-    const res = await axios.post('https://duco-backend.onrender.com/api/designs', payload, {
+    const res = await axios.post('https://cloth-backend-aciv.onrender.com/api/designs', payload, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -53,7 +53,7 @@ export const createDesign = async (payload) => {
 
 export const getCategories = async () => {
     try {
-      const res = await axios.get("https://duco-backend.onrender.com/category/getall");
+      const res = await axios.get("https://cloth-backend-aciv.onrender.com/category/getall");
       return res.data.category || [];
     } catch (err) {
       console.error("Error fetching categories:", err);
@@ -64,7 +64,7 @@ export const getCategories = async () => {
 
   export const getSubcategoriesByCategoryId = async (categoryId) => {
   try {
-    const res = await axios.get(`https://duco-backend.onrender.com/subcategory/subcat/${categoryId}`);
+    const res = await axios.get(`https://cloth-backend-aciv.onrender.com/subcategory/subcat/${categoryId}`);
     return res.data.data || []; // Assuming controller sends { data: [...] }
   } catch (err) {
     console.error("Error fetching subcategories:", err);
@@ -74,7 +74,7 @@ export const getCategories = async () => {
 
   export const getproducts = async () => {
   try {
-    const res = await axios.get(`https://duco-backend.onrender.com/products/get/`);
+    const res = await axios.get(`https://cloth-backend-aciv.onrender.com/products/get/`);
     return res.data || []; // Assuming controller sends { data: [...] }
   } catch (err) {
     console.error("Error fetching subcategories:", err);
@@ -85,7 +85,7 @@ export const getCategories = async () => {
 
 export const getproductssingle = async (id) => {
   try {
-    const res = await axios.get(`https://duco-backend.onrender.com/products/get/${id}`);
+    const res = await axios.get(`https://cloth-backend-aciv.onrender.com/products/get/${id}`);
     return res.data || []; // Assuming controller sends { data: [...] }
   } catch (err) {
     console.error("Error fetching subcategories:", err);
@@ -99,7 +99,7 @@ export const getproductssingle = async (id) => {
 
 export const getproductcategory = async (idsub) => {
   try {
-    const res = await axios.get(`https://duco-backend.onrender.com/products/getsub/${idsub}`);
+    const res = await axios.get(`https://cloth-backend-aciv.onrender.com/products/getsub/${idsub}`);
     return res.data || []; // Assuming controller sends { data: [...] }
   } catch (err) {
     console.error("Error fetching subcategories:", err);
@@ -110,7 +110,7 @@ export const getproductcategory = async (idsub) => {
 
 export const Updateproductcate = async (id,updates) => {
   try {
-    const res = await axios.put(`https://duco-backend.onrender.com/products/update/:${id}`,updates);
+    const res = await axios.put(`https://cloth-backend-aciv.onrender.com/products/update/:${id}`,updates);
     return res.data || []; // Assuming controller sends { data: [...] }
   } catch (err) {
     console.error("Error fetching subcategories:", err);
@@ -121,7 +121,7 @@ export const Updateproductcate = async (id,updates) => {
 
 export const fetchOrdersByUser = async (userId) => {
   try {
-    const res = await fetch(`https://duco-backend.onrender.com/api/order/user/${userId}`);
+    const res = await fetch(`https://cloth-backend-aciv.onrender.com/api/order/user/${userId}`);
     const data = await res.json();
     return data;
   } catch (err) {
