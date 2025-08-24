@@ -67,11 +67,13 @@ const App = () => {
               <Route  path='/contact' element={<Contact/>}/>
                 <Route  path='/cart' element={<Cart/>}/>
                 <Route  path='/products/:id' element={<ProductPage/>}/>
+                
                   <Route  path='/getbulk' element={<GetBulk/>}/>
                      <Route  path='/order' element={<Order/>}/>
                       <Route  path='/design/:proid/:color' element={<TShirtDesigner/>}/>
                         <Route  path='/profile' element={<ProfilePanel/>}/>
                          <Route  path='/payment' element={<PaymentPage/>}/>
+                           <Route  path='/products' element={<Prodcuts/>}/>
                           <Route path="/order-processing" element={<OrderProcessing />} />
                           <Route  path='/products/subcategory/:id/:catogory_name' element={<SaerchingPage/>}/>
                            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
