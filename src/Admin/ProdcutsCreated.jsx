@@ -1,10 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const ProductsCreated = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [subcategories, setSubcategories] = useState([]);
+
+  // === NEW: Default sizes/content ===
+  const DEFAULT_SIZES = ["S", "M", "L", "XL"];
+  const defaultContent = DEFAULT_SIZES.map((s) => ({ size: s, minstock: 10 }));
 
   useEffect(() => {
     const getSubCategories = async () => {
@@ -21,21 +24,24 @@ const ProductsCreated = () => {
 
   const [formData, setFormData] = useState({
     products_name: '',
-    image_url: [{
-      url: [''],
-      color: '',
-      colorcode: '',
-      videolink: '',
-      content: [{ size: '', minstock: 1 }]
-    }],
+    image_url: [
+      {
+        url: [''],
+        color: '',
+        colorcode: '',
+        videolink: '',
+        // === NEW: prefill S, M, L, XL with minstock 10
+        content: defaultContent
+      }
+    ],
     pricing: [{ quantity: '', price_per: '', discount: 0 }],
     Desciptions: [''],
     subcategory: '',
     gender: 'Male'
   });
 
-  const nextStep = () => setCurrentStep(prev => prev + 1);
-  const prevStep = () => setCurrentStep(prev => prev - 1);
+  const nextStep = () => setCurrentStep((prev) => prev + 1);
+  const prevStep = () => setCurrentStep((prev) => prev - 1);
 
   const handleChange = (e, field) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -55,20 +61,26 @@ const ProductsCreated = () => {
 
   const handleContentChange = (e, imgIndex, contentIndex, field) => {
     const updated = [...formData.image_url];
-    updated[imgIndex].content[contentIndex][field] = e.target.value;
+    // keep minstock numeric
+    const v = field === 'minstock' ? Number(e.target.value) : e.target.value;
+    updated[imgIndex].content[contentIndex][field] = v;
     setFormData({ ...formData, image_url: updated });
   };
 
   const addImageField = () => {
     setFormData({
       ...formData,
-      image_url: [...formData.image_url, {
-        url: [''],
-        color: '',
-        colorcode: '',
-        videolink: '',
-        content: [{ size: '', minstock: 1 }]
-      }]
+      image_url: [
+        ...formData.image_url,
+        {
+          url: [''],
+          color: '',
+          colorcode: '',
+          videolink: '',
+          // === NEW: every new image block gets defaults
+          content: defaultContent
+        }
+      ]
     });
   };
 
@@ -80,7 +92,17 @@ const ProductsCreated = () => {
 
   const addContentField = (imgIndex) => {
     const updated = [...formData.image_url];
-    updated[imgIndex].content.push({ size: '', minstock: 1 });
+    const existing = new Set(
+      (updated[imgIndex].content || []).map((c) => String(c.size).toUpperCase())
+    );
+    // try to add the next missing default size first
+    const nextDefault = DEFAULT_SIZES.find((s) => !existing.has(s));
+    if (nextDefault) {
+      updated[imgIndex].content.push({ size: nextDefault, minstock: 10 });
+    } else {
+      // if all defaults present, add a blank line but keep minstock 10
+      updated[imgIndex].content.push({ size: '', minstock: 10 });
+    }
     setFormData({ ...formData, image_url: updated });
   };
 
@@ -104,7 +126,10 @@ const ProductsCreated = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://cloth-backend-aciv.onrender.com/products/create', formData);
+      const res = await axios.post(
+        'https://cloth-backend-aciv.onrender.com/products/create',
+        formData
+      );
       alert(res?.data?.message || "Product created successfully");
     } catch (error) {
       console.error('Error creating product:', error);
@@ -115,20 +140,40 @@ const ProductsCreated = () => {
   const StepNavigation = () => (
     <div className="flex justify-between mt-6">
       {currentStep > 1 && (
-        <button onClick={prevStep} className="bg-gray-200 hover:bg-gray-300 px-5 py-2 rounded shadow">⏪ Back</button>
+        <button
+          type="button"
+          onClick={prevStep}
+          className="bg-gray-200 hover:bg-gray-300 px-5 py-2 rounded shadow"
+        >
+          ⏪ Back
+        </button>
       )}
       {currentStep < 6 && (
-        <button onClick={nextStep} className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded shadow">Next ⏩</button>
+        <button
+          type="button"
+          onClick={nextStep}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded shadow"
+        >
+          Next ⏩
+        </button>
       )}
       {currentStep === 6 && (
-        <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow">✅ Submit</button>
+        <button
+          type="submit"
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow"
+        >
+          ✅ Submit
+        </button>
       )}
     </div>
   );
 
   return (
     <div className="max-w-5xl mx-auto p-8 bg-gradient-to-br from-white via-slate-50 to-white shadow-xl rounded-lg border border-slate-100">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">🛍️ Create New Product <span className="text-base block mt-1 text-gray-500">Step {currentStep} of 6</span></h2>
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        🛍️ Create New Product{' '}
+        <span className="text-base block mt-1 text-gray-500">Step {currentStep} of 6</span>
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {currentStep === 1 && (
           <input
@@ -141,82 +186,177 @@ const ProductsCreated = () => {
           />
         )}
 
-          {currentStep === 2 && (
+        {currentStep === 2 && (
           <>
             <h3 className="font-semibold text-lg text-gray-700">Images, Color & Sizes</h3>
             {formData.image_url.map((img, imgIndex) => (
               <div key={imgIndex} className="border border-slate-200 p-5 bg-white mb-6 rounded-lg shadow">
                 <h4 className="text-sm font-semibold mb-3 text-blue-700">Image Block #{imgIndex + 1}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <input type="text" placeholder="Color" value={img.color} onChange={(e) => handleNestedChange(e, 'image_url', imgIndex, 'color')} className="border p-2 rounded" />
-                  <input type="text" placeholder="Color Code" value={img.colorcode} onChange={(e) => handleNestedChange(e, 'image_url', imgIndex, 'colorcode')} className="border p-2 rounded" />
-                  <input type="text" placeholder="Video Link" value={img.videolink} onChange={(e) => handleNestedChange(e, 'image_url', imgIndex, 'videolink')} className="border p-2 rounded" />
+                  <input
+                    type="text"
+                    placeholder="Color"
+                    value={img.color}
+                    onChange={(e) => handleNestedChange(e, 'image_url', imgIndex, 'color')}
+                    className="border p-2 rounded"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Color Code"
+                    value={img.colorcode}
+                    onChange={(e) => handleNestedChange(e, 'image_url', imgIndex, 'colorcode')}
+                    className="border p-2 rounded"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Video Link"
+                    value={img.videolink}
+                    onChange={(e) => handleNestedChange(e, 'image_url', imgIndex, 'videolink')}
+                    className="border p-2 rounded"
+                  />
                 </div>
+
                 <div className="mt-3 space-y-2">
                   {img.url.map((url, urlIndex) => (
-                    <input key={urlIndex} type="text" placeholder={`Image URL #${urlIndex + 1}`} value={url} onChange={(e) => handleImageUrlChange(e, imgIndex, urlIndex)} className="w-full border p-2 rounded" />
+                    <input
+                      key={urlIndex}
+                      type="text"
+                      placeholder={`Image URL #${urlIndex + 1}`}
+                      value={url}
+                      onChange={(e) => handleImageUrlChange(e, imgIndex, urlIndex)}
+                      className="w-full border p-2 rounded"
+                    />
                   ))}
-                  <button type="button" onClick={() => addImageUrl(imgIndex)} className="text-blue-500 text-sm">+ Add Image URL</button>
+                  <button
+                    type="button"
+                    onClick={() => addImageUrl(imgIndex)}
+                    className="text-blue-500 text-sm"
+                  >
+                    + Add Image URL
+                  </button>
                 </div>
+
                 <div className="mt-4">
                   <h4 className="text-sm font-medium text-gray-700">Size & Stock</h4>
                   {img.content.map((contentItem, contentIndex) => (
                     <div key={contentIndex} className="flex gap-4 mt-2">
-                      <input type="text" placeholder={`Size #${contentIndex + 1}`} value={contentItem.size} onChange={(e) => handleContentChange(e, imgIndex, contentIndex, 'size')} className="w-1/2 border p-2 rounded" />
-                      <input type="number" placeholder="Min Stock" value={contentItem.minstock} onChange={(e) => handleContentChange(e, imgIndex, contentIndex, 'minstock')} className="w-1/2 border p-2 rounded" />
+                      <input
+                        type="text"
+                        placeholder={`Size #${contentIndex + 1}`}
+                        value={contentItem.size}
+                        onChange={(e) => handleContentChange(e, imgIndex, contentIndex, 'size')}
+                        className="w-1/2 border p-2 rounded"
+                      />
+                      <input
+                        type="number"
+                        placeholder="Min Stock"
+                        value={contentItem.minstock}
+                        onChange={(e) => handleContentChange(e, imgIndex, contentIndex, 'minstock')}
+                        className="w-1/2 border p-2 rounded"
+                        min={0}
+                      />
                     </div>
                   ))}
-                  <button type="button" onClick={() => addContentField(imgIndex)} className="text-blue-500 text-sm mt-2">+ Add Size</button>
+                  <button
+                    type="button"
+                    onClick={() => addContentField(imgIndex)}
+                    className="text-blue-500 text-sm mt-2"
+                  >
+                    + Add Size
+                  </button>
                 </div>
               </div>
             ))}
-            <button type="button" onClick={addImageField} className="text-sm text-blue-600 font-medium">+ Add New Image Block</button>
+            <button
+              type="button"
+              onClick={addImageField}
+              className="text-sm text-blue-600 font-medium"
+            >
+              + Add New Image Block
+            </button>
           </>
         )}
-       
+
         {currentStep === 3 && (
           <>
             <h3 className="font-semibold text-lg text-gray-700">Pricing Tiers</h3>
             {formData.pricing.map((item, i) => (
               <div key={i} className="grid grid-cols-3 gap-4 mb-3">
-                <input type="number" placeholder={`Qty #${i + 1}`} value={item.quantity} onChange={(e) => handleNestedChange(e, 'pricing', i, 'quantity')} className="border p-2 rounded" />
-                <input type="number" placeholder={`Price #${i + 1}`} value={item.price_per} onChange={(e) => handleNestedChange(e, 'pricing', i, 'price_per')} className="border p-2 rounded" />
-                <input type="number" placeholder={`Discount (%) #${i + 1}`} value={item.discount} onChange={(e) => handleNestedChange(e, 'pricing', i, 'discount')} className="border p-2 rounded" />
+                <input
+                  type="number"
+                  placeholder={`Qty #${i + 1}`}
+                  value={item.quantity}
+                  onChange={(e) => handleNestedChange(e, 'pricing', i, 'quantity')}
+                  className="border p-2 rounded"
+                  min={0}
+                />
+                <input
+                  type="number"
+                  placeholder={`Price #${i + 1}`}
+                  value={item.price_per}
+                  onChange={(e) => handleNestedChange(e, 'pricing', i, 'price_per')}
+                  className="border p-2 rounded"
+                  min={0}
+                />
+                <input
+                  type="number"
+                  placeholder={`Discount (%) #${i + 1}`}
+                  value={item.discount}
+                  onChange={(e) => handleNestedChange(e, 'pricing', i, 'discount')}
+                  className="border p-2 rounded"
+                  min={0}
+                />
               </div>
             ))}
-            <button type="button" onClick={addPricingField} className="text-sm text-blue-600 font-medium">+ Add Price Tier</button>
+            <button
+              type="button"
+              onClick={addPricingField}
+              className="text-sm text-blue-600 font-medium"
+            >
+              + Add Price Tier
+            </button>
           </>
         )}
 
-       
         {currentStep === 4 && (
           <>
             <h3 className="font-semibold text-lg text-gray-700">Product Descriptions</h3>
             {formData.Desciptions.map((desc, i) => (
-              <textarea key={i} placeholder={`Description #${i + 1}`} value={desc} onChange={(e) => handleDescriptionChange(e, i)} className="w-full border p-2 rounded mb-2" />
+              <textarea
+                key={i}
+                placeholder={`Description #${i + 1}`}
+                value={desc}
+                onChange={(e) => handleDescriptionChange(e, i)}
+                className="w-full border p-2 rounded mb-2"
+              />
             ))}
-            <button type="button" onClick={addDescriptionField} className="text-sm text-blue-600 font-medium">+ Add Description</button>
+            <button
+              type="button"
+              onClick={addDescriptionField}
+              className="text-sm text-blue-600 font-medium"
+            >
+              + Add Description
+            </button>
           </>
         )}
 
         {currentStep === 5 && (
           <>
             <h3 className="font-semibold text-lg text-gray-700">Subcategory Reference</h3>
-         <select
-  value={formData.subcategory}
-  onChange={(e) => handleChange(e, 'subcategory')}
-  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200 mb-4"
->
-  <option value="">Select a Subcategory</option>
-  {subcategories.map((cat) => (
-    <option key={cat._id} value={cat._id}>
-      {cat.subcatogry}
-      {cat.categoryId?.length > 0 &&
-        ` (Belongs to: ${cat.categoryId[0]?.category})`}
-    </option>
-  ))}
-</select>
-
+            <select
+              value={formData.subcategory}
+              onChange={(e) => handleChange(e, 'subcategory')}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200 mb-4"
+            >
+              <option value="">Select a Subcategory</option>
+              {subcategories.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.subcatogry}
+                  {cat.categoryId?.length > 0 &&
+                    ` (Belongs to: ${cat.categoryId[0]?.category})`}
+                </option>
+              ))}
+            </select>
 
             <h3 className="font-semibold text-lg text-gray-700">Product Gender</h3>
             <select
@@ -239,7 +379,6 @@ const ProductsCreated = () => {
               <p><strong>Name:</strong> {formData.products_name}</p>
               <p><strong>Gender:</strong> {formData.gender}</p>
               <p><strong>Subcategory:</strong> {formData.subcategory}</p>
-              {/* Show more fields if needed */}
             </div>
           </>
         )}
