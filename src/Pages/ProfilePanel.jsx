@@ -28,7 +28,7 @@ const ProfilePanel = () => {
   }
 
   return (
-    <div className="relative max-w-md mx-auto mt-10 p-6 rounded-2xl shadow-lg border border-[#E5C870] bg-black text-white font-sans">
+    <div className="relative max-w-md mx-auto mt-10 p-6 rounded-2xl shadow-lg border border-[#E5C870] bg-[#F6F8FF] text-[#02066F] font-sans">
 
       {/* 🔓 Logout Button — Top Right */}
       <button
@@ -45,18 +45,18 @@ const ProfilePanel = () => {
         </div>
 
         {/* Name & Phone */}
-        <h2 className="text-2xl font-semibold">{user.name}</h2>
+        <h2 className="text-2xl text-[#02066F] font-semibold">{user.name}</h2>
         <p className="text-md text-[#E5C870]">📞 {user.number}</p>
 
         {/* Info */}
         <div className="w-full mt-6 text-sm border-t border-gray-700 pt-4">
           <div className="flex justify-between py-1">
-            <span className="text-gray-400">User ID</span>
-            <span className="text-white truncate">{user._id}</span>
+            <span className="text-[#02066F]">User ID</span>
+            <span className="text[#1B2559]  truncate">{user._id}</span>
           </div>
           <div className="flex justify-between py-1">
-            <span className="text-gray-400">Joined</span>
-            <span className="text-white">
+            <span className="text-[#02066F]">Joined</span>
+            <span className="text-[#1B2559]">
               {new Date(user.createdAt).toLocaleDateString()}
             </span>
           </div>
