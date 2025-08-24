@@ -131,6 +131,7 @@ const ProductsCreated = () => {
         formData
       );
       alert(res?.data?.message || "Product created successfully");
+      window.location.reload();
     } catch (error) {
       console.error('Error creating product:', error);
       alert("Something went wrong while creating product");
