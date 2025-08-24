@@ -18,7 +18,7 @@ export const PriceProvider = ({ children }) => {
     const fetchPriceData = async () => {
       try {
         // Fetch price data based on the current location using Axios
-        const response = await axios.post(`https://cloth-backend-aciv.onrender.com/api/money/get_location_increase`, {
+        const response = await axios.post(`https://cloth-backend-aciv.onrender.com/money/get_location_increase`, {
           location,  // Ensure `location` is properly defined
         });
 
