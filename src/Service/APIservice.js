@@ -129,3 +129,8 @@ export const fetchOrdersByUser = async (userId) => {
     return [];
   }
 };
+
+export async function adminLogin(userid, password) {
+  const { data } = await axios.post("https://cloth-backend-aciv.onrender.com/api/admin/check", { userid, password });
+  return !!data?.ok;          // boolean true/false
+}

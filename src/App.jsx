@@ -34,7 +34,9 @@ import OrderProcessing  from "./Components/OrderProcessing.jsx"
 import OrderSection from "./Admin/OderSection.jsx"
 
 import AnalyticsDashboard from './Admin/AnalyticsDashboard.jsx';
-import ProductRouter from './Pages/ProductRouter.jsx';
+
+import AdminGuard from './Admin/auth/AdminGuard.jsx';
+import AdminLogin from './Admin/AdminLogin.jsx';
 
 
 const App = () => {
@@ -86,17 +88,19 @@ const App = () => {
       
 
    
-      <Route path="/admin" element={<AdminLayout />}>
-        <Route index element={<Adminhome />} />
-        <Route path="products" element={<ProdcutsCreated />} />
-        <Route path="category" element={<Category/>} />
-        <Route path='moneyset' element={<MoneySet/>} />
-        <Route path='edit/:id' element={<ProductsUpdate/>}/>
-          <Route path='/admin/order' element={<OrderSection/>}/>
-           <Route path='/admin/sales' element={<AnalyticsDashboard/>}/>
-     
+ <Route path="/admin/login" element={<AdminLogin />} />
 
-      </Route>
+<Route element={<AdminGuard />}>
+  <Route path="/admin" element={<AdminLayout />}>
+    <Route index element={<Adminhome />} />
+    <Route path="products" element={<ProdcutsCreated />} />
+    <Route path="category" element={<Category />} />
+    <Route path="moneyset" element={<MoneySet />} />
+    <Route path="edit/:id" element={<ProductsUpdate />} />
+    <Route path="order" element={<OrderSection />} />
+    <Route path="sales" element={<AnalyticsDashboard />} />
+  </Route>
+</Route>
  
       
     </Routes>
