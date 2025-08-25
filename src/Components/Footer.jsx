@@ -17,9 +17,10 @@ const Footer = () => {
         {/* Left - Contact Info */}
         <div className="bg-[#1B2559] p-6 rounded-2xl flex-[1] min-w-[250px]">
           {/* <img src={logo} alt="DUCO ART" className="w-32 mb-4" /> */}
-        <h2 className='text-2xl'>Xoutfit</h2>
-          <p className="mb-1">Phone : xxxxxxxxxx</p>
-          <p>Email : ducoart@12.com</p>
+       <h2 className='text-xl'>Jalwatrading</h2>
+          <p className="mb-1">Phone : 9873389793</p>
+          <p>Email :  Tradersjalwa@gmail.com</p>
+           <p className='font-thin'>Address: PLOT NO 701 KH. NO. 80/10, GROUND FLOOR JAIN NAGAR TIRANTHAKAR NAGAR, Karala, North West Delhi, Delhi, Delhi, India,110081</p> 
         </div>
 
         {/* Right - Navigation */}
