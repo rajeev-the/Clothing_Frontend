@@ -102,7 +102,7 @@ const MobileSidebar = ({ menuItems, setMobileMenuOpen, mobileMenuOpen }) => {
         {/* Header */}
         <div className="flex justify-between items-center px-4 py-4 border-b border-white/20">
           {/* <img ref={imageRef} src={logo} alt="Logo" className="h-8 w-auto" /> */}
-          <h2 className='text-2xl'>Xoutfit</h2>
+          <h2 className='text-xl'>Jalwatrading</h2>
           <FiX onClick={() => setMobileMenuOpen(false)} className="text-2xl cursor-pointer" />
         </div>
 

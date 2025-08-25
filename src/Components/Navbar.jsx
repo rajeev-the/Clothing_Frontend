@@ -87,7 +87,7 @@ const [islineclick, setIslineClick] = useState("home");
         {/* Center Logo */}
         <div className="flex-shrink-0">
           {/* <img src={logo} alt="DUCO ART Logo" className="h-6 object-contain" /> */}
-          <h2 className='text-2xl'>Xoutfit</h2>
+          <h2 className='text-xl'>Jalwatrading</h2>
         </div>
 
         {/* Right Section */}
