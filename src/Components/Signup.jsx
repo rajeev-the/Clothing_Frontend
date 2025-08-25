@@ -5,10 +5,16 @@ import { toast } from 'react-toastify';
 const Signup = ({ setIsOpenLog, login }) => {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+    const [confpassword, setConfPassword] = useState('');
+  const [confname, setConfName] = useState('');
+  const [Telephone, setTelephone] = useState('');
+ const [firstName, setFirstName] = useState('');
   const [otp, setOtp] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
   const [isExistingUser, setIsExistingUser] = useState(false); // 👈 Track user existence
+  const [reg,setReg]= useState(false);
 
   const handleSendOtp = async (e) => {
     e.preventDefault();
@@ -51,10 +57,14 @@ const Signup = ({ setIsOpenLog, login }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+      
+     
       <div className="bg-white rounded-lg p-6 w-[90%] max-w-md relative">
+       
         <h2 className="text-xl font-bold mb-4 text-center">
           {step === 1 ? 'Enter Gmail to Get OTP' : 'Verify OTP'}
         </h2>
+        
 
         <form onSubmit={step === 1 ? handleSendOtp : handleVerifyOtp} className="space-y-4">
           <input
@@ -64,6 +74,74 @@ const Signup = ({ setIsOpenLog, login }) => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
           />
+            {
+        reg &&(
+          <>
+            <input
+            type="text"
+            placeholder="Enter your firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+          
+            <input
+            type="text"
+            placeholder="Enter your lastName"
+            value={confname}
+            onChange={(e) =>  setConfName(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+          
+            <input
+            type="text"
+            placeholder="Enter your telephone"
+            value={Telephone}
+            onChange={(e) => setTelephone(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+          
+            <input
+            type="text"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+          
+            <input
+            type="text"
+            placeholder="Enter your confirm  password"
+            value={confpassword}
+            onChange={(e) => setConfPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+           <button
+            
+          onClick={() =>{
+              setReg(reg=>!reg)
+          
+              toast.success("Registration successfully")
+          } 
+
+          }
+            className="w-full bg-green-500 text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
+          >
+          Confirm
+          </button>
+          
+          
+          </>
+          
+      
+       
+        
+
+    
+        )
+
+        
+      }
 
           {step === 2 && (
             <>
@@ -83,6 +161,14 @@ const Signup = ({ setIsOpenLog, login }) => {
                 onChange={(e) => setOtp(e.target.value)}
                 className="w-full border border-gray-300 p-2 rounded"
               />
+              
+                 <button
+            
+          onClick={() => setReg(reg=>!reg)}
+            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
+          >
+          Registration
+          </button>
             </>
           )}
 
@@ -92,6 +178,13 @@ const Signup = ({ setIsOpenLog, login }) => {
             className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
           >
             {loading ? 'Processing...' : step === 1 ? 'Send OTP' : 'Verify & Login'}
+          </button>
+            <button
+            
+          onClick={() => setReg(reg=>!reg)}
+            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
+          >
+          Registration
           </button>
         </form>
 

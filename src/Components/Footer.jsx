@@ -5,7 +5,7 @@ import {
   Facebook,
 
 } from "lucide-react";
-import logo from "../assets/image.png"
+import logo from "../assets/logoo.png"
 
 
 
@@ -16,10 +16,10 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row gap-2   w-full  ">
         {/* Left - Contact Info */}
         <div className="bg-[#1B2559] p-6 rounded-2xl flex-[1] min-w-[250px]">
-          {/* <img src={logo} alt="DUCO ART" className="w-32 mb-4" /> */}
-       <h2 className='text-xl'>Jalwatrading</h2>
+          <img src={logo} alt="DUCO ART" className="w-20" />
+
           <p className="mb-1">Phone : 9873389793</p>
-          <p>Email :  Tradersjalwa@gmail.com</p>
+          <p>Email : tradersjalwa@gmail.com</p>
            <p className='font-thin'>Address: PLOT NO 701 KH. NO. 80/10, GROUND FLOOR JAIN NAGAR TIRANTHAKAR NAGAR, Karala, North West Delhi, Delhi, Delhi, India,110081</p> 
         </div>
 
@@ -83,7 +83,7 @@ const Footer = () => {
         {/* Footer Text */}
         <div className="bg-[#E5C870] text-center p-4 rounded-2xl flex-[3]">
           <p className="text-black font-medium text-sm">
-            © 2035 by T Shop. Powered and secured
+            © 2035 by Jalwatrading. Powered and secured
           </p>
         </div>
       </div>

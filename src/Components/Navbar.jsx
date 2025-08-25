@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { FaSearch, FaShoppingBag, FaBars, FaTimes   } from "react-icons/fa";
 import { RiAccountCircle2Fill } from "react-icons/ri";
-import logo from "../assets/image.png"
+import logo from "../assets/logoo.png"
 
 import { NavLink, useLocation ,Link , useNavigate } from "react-router-dom";
 import ProductMegaMenu from './ProductMegaMenuXX';
@@ -86,8 +86,8 @@ const [islineclick, setIslineClick] = useState("home");
 
         {/* Center Logo */}
         <div className="flex-shrink-0">
-          {/* <img src={logo} alt="DUCO ART Logo" className="h-6 object-contain" /> */}
-          <h2 className='text-xl'>Jalwatrading</h2>
+          <img src={logo} alt="DUCO ART Logo" className="h-15 object-contain" />
+          {/* <h2 className='text-xl'>Jalwatrading</h2> */}
         </div>
 
         {/* Right Section */}

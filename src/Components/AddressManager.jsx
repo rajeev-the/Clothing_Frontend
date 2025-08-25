@@ -1,6 +1,7 @@
 // 📁 src/components/AddressManager.jsx
 import React, { useState, useEffect } from 'react';
 import { addAddressToUser } from '../Service/UserAPI';
+import { toast } from 'react-toastify';
 
 const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
   const [address, setAddress] = useState({
@@ -24,6 +25,10 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
     const { name, value } = e.target;
 
     // Keep pincode numeric and max 6 digits
+
+
+
+
     if (name === 'pincode') {
       const onlyDigits = value.replace(/\D/g, '').slice(0, 6);
       setAddress((prev) => ({ ...prev, pincode: onlyDigits }));
@@ -101,6 +106,14 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
       setError('Please enter a valid 6-digit pincode');
       return;
     }
+    if (address.mobileNumber.length) {
+  const digitsOnly = value.replace(/\D/g, ""); // keep digits only
+  if (digitsOnly.length !== 10) {
+    toast.error("Mobile number should be 10 digits");
+    return;
+  }
+}
+
 
     try {
       setLoading(true);
