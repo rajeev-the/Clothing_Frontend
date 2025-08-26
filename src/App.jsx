@@ -37,6 +37,7 @@ import AnalyticsDashboard from './Admin/AnalyticsDashboard.jsx';
 
 import AdminGuard from './Admin/auth/AdminGuard.jsx';
 import AdminLogin from './Admin/AdminLogin.jsx';
+import ReturnPolicy from './Pages/ReturnPolicy.jsx';
 
 
 const App = () => {
@@ -80,6 +81,7 @@ const App = () => {
                             <Route path="/refund-return-policy" element={<RefundReturnPolicy />} />
                             <Route path="/shipping-policy" element={<ShippingPolicy />} />
                             <Route path="/terms-and-conditions" element={<TermsConditions />} />
+                             <Route path="/Refundreturn" element={<ReturnPolicy/>} />
                             
 
 
