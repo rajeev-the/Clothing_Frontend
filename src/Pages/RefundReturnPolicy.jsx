@@ -20,7 +20,7 @@ export default function RefundReturnPolicy() {
                 rel="noreferrer"
                 className="text-blue-600 underline"
               >
-                nikhidsolutions.store
+               jalwatrading.store
               </a>
             </p>
           </div>

@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
                 target="_blank"
                 rel="noreferrer"
               >
-                nikhidsolutions.store
+               jalwatrading.store
               </a>
             </p>
           </div>
