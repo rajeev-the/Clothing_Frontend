@@ -268,10 +268,8 @@ export default function PrivacyPolicy() {
               </p>
             </section>
 
-            <hr className="my-6" />
 
-            {/* Grievance Officer */}
-          \
+        
 
             <hr className="my-6" />
 
