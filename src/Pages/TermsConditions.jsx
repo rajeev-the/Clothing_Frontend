@@ -36,9 +36,7 @@ const TermsAndConditions = () => {
           <p>
             The Platform is owned by <strong>Jalwa Trading Pvt Ltd</strong>, a
             company incorporated under the Companies Act, 1956 with its
-            registered office at VILLAGE BEGAMPUR CITY DELHI, Landmark rajiv
-            nagar sumit tailor, Begumpur, North West Delhi, Delhi, Delhi, India,
-            110086 (hereinafter referred to as ‘Platform Owner’, 'we', 'us',
+            registered office at PLOT NO 701 KH. NO. 80/10, GROUND FLOOR JAIN NAGAR TIRANTHAKAR NAGAR, Karala, North West Delhi, Delhi, Delhi, India, (hereinafter referred to as ‘Platform Owner’, 'we', 'us',
             'our').
           </p>
 
