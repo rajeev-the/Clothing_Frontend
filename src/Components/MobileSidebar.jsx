@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiX, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import logo from "../assets/image.png";
+import logo from "../assets/logoo.png";
 import { getCategories, getSubcategoriesByCategoryId } from "../Service/APIservice";
 import AccountQuickActions from "./AccountQuickActions"
 
@@ -101,8 +101,8 @@ const MobileSidebar = ({ menuItems, setMobileMenuOpen, mobileMenuOpen }) => {
       >
         {/* Header */}
         <div className="flex justify-between items-center px-4 py-4 border-b border-white/20">
-          {/* <img ref={imageRef} src={logo} alt="Logo" className="h-8 w-auto" /> */}
-          <h2 className='text-xl'>Jalwatrading</h2>
+          <img ref={imageRef} src={logo} alt="Logo" className="h-16 w-auto" />
+         
           <FiX onClick={() => setMobileMenuOpen(false)} className="text-2xl cursor-pointer" />
         </div>
 
