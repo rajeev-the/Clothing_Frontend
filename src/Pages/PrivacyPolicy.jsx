@@ -93,9 +93,7 @@ export default function PrivacyPolicy() {
                 the Platform.
               </p>
               <div className="text-sm text-gray-600">
-                Registered Office: Village Begampur, Landmark: Rajiv Nagar
-                (Sumit Tailor), Begumpur, North West Delhi, Delhi, India –
-                110086.
+                Registered Office:PLOT NO 701 KH. NO. 80/10, GROUND FLOOR JAIN NAGAR TIRANTHAKAR NAGAR, Karala, North West Delhi, Delhi, Delhi, India,
               </div>
             </section>
 
