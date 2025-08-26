@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
                   ["#rights", "Your Rights"],
                   ["#consent", "Consent"],
                   ["#changes", "Changes to this Policy"],
-                  ["#grievance", "Grievance Officer"],
+                 
                   ["#contact", "Contact Us"],
                 ].map(([href, label]) => (
                   <a key={href} href={href} className="block hover:text-blue-700">
@@ -271,63 +271,7 @@ export default function PrivacyPolicy() {
             <hr className="my-6" />
 
             {/* Grievance Officer */}
-            <section id="grievance" className="space-y-3 scroll-mt-24">
-              <h2 className="text-xl font-semibold">Grievance Officer</h2>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Name of the Officer
-                  </label>
-                  <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    [Insert Name]
-                  </p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Designation
-                  </label>
-                  <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    [Insert Designation]
-                  </p>
-                </div>
-                <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Company Name & Address
-                  </label>
-                  <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    Jalwa Trading Pvt Ltd
-                    <br />
-                    Village Begampur, Landmark: Rajiv Nagar (Sumit Tailor),
-                    <br />
-                    Begumpur, North West Delhi, Delhi, India – 110086
-                  </p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Email
-                  </label>
-                  <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    [grievance@example.com]
-                  </p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Phone
-                  </label>
-                  <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    [+91-XXXXXXXXXX]
-                  </p>
-                </div>
-                <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Office Hours
-                  </label>
-                  <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    Monday – Friday (09:00 – 18:00 IST)
-                  </p>
-                </div>
-              </div>
-            </section>
+          \
 
             <hr className="my-6" />
 
