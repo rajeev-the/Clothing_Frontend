@@ -13,10 +13,10 @@ export default function PrivacyPolicy() {
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Privacy Policy</h1>
             <p className="mt-1 text-sm text-gray-500">
-              NIKHID SOLUTIONS PRIVATE LIMITED • Website:&nbsp;
+              Jalwa Trading Pvt Ltd • Website:&nbsp;
               <a
                 className="text-blue-600 underline"
-                href="https://nikhidsolutions.store/"
+                href="https://jalwatrading.store/"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -69,17 +69,17 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold">Introduction</h2>
               <p>
                 This Privacy Policy describes how{" "}
-                <strong>NIKHID SOLUTIONS PRIVATE LIMITED</strong> and its
+                <strong>Jalwa Trading Pvt Ltd</strong> and its
                 affiliates (“we”, “us”, “our”) collect, use, share, protect, or
                 otherwise process your information/personal data through our
                 website{" "}
                 <a
                   className="text-blue-600 underline"
-                  href="https://nikhidsolutions.store/"
+                  href="https://jalwatrading.store/"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  https://nikhidsolutions.store/
+                  https://jalwatrading.store/
                 </a>{" "}
                 (the “Platform”). You may browse certain sections without
                 registering. We do not offer services outside India; your data
@@ -125,7 +125,7 @@ export default function PrivacyPolicy() {
               </p>
               <p className="italic text-gray-700">
                 Warning: If anyone claiming to be from{" "}
-                <strong>NIKHID SOLUTIONS PRIVATE LIMITED</strong> asks for
+                <strong>Jalwa Trading Pvt Ltd</strong> asks for
                 debit/credit PIN, net-banking/mobile-banking password,{" "}
                 <span className="underline">do not share</span>. Report to law
                 enforcement immediately.
@@ -295,7 +295,7 @@ export default function PrivacyPolicy() {
                     Company Name & Address
                   </label>
                   <p className="mt-1 rounded-md border bg-gray-50 p-2">
-                    NIKHID SOLUTIONS PRIVATE LIMITED
+                    Jalwa Trading Pvt Ltd
                     <br />
                     Village Begampur, Landmark: Rajiv Nagar (Sumit Tailor),
                     <br />
@@ -345,11 +345,7 @@ export default function PrivacyPolicy() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-8 border-t bg-white">
-        <div className="mx-auto max-w-5xl px-5 py-6 text-sm text-gray-500">
-          © {year} NIKHID SOLUTIONS PRIVATE LIMITED. All rights reserved.
-        </div>
-      </footer>
+     
     </div>
 
   );

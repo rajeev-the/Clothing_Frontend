@@ -13,9 +13,9 @@ export default function RefundReturnPolicy() {
               Refund &amp; Cancellation Policy
             </h1>
             <p className="mt-1 text-sm text-gray-500">
-              NIKHID SOLUTIONS PRIVATE LIMITED • Website:&nbsp;
+              Jalwa Trading Pvt Ltd • Website:&nbsp;
               <a
-                href="https://nikhidsolutions.store/"
+                href="https://jalwatrading.store/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue-600 underline"
@@ -54,7 +54,7 @@ export default function RefundReturnPolicy() {
             </li>
 
             <li>
-              <strong>NIKHID SOLUTIONS PRIVATE LIMITED</strong> does not accept
+              <strong>Jalwa Trading Pvt Ltd</strong> does not accept
               cancellation requests for perishable items like flowers, eatables,
               etc. However, a refund/replacement can be made if the user
               establishes that the quality of the product delivered is not good.
@@ -81,7 +81,7 @@ export default function RefundReturnPolicy() {
 
             <li>
               In case any refund is approved by{" "}
-              <strong>NIKHID SOLUTIONS PRIVATE LIMITED</strong>, it will take{" "}
+              <strong>Jalwa Trading Pvt Ltd</strong>, it will take{" "}
               <strong>up to 7 days</strong> for the refund to be processed to
               you.
             </li>
@@ -140,11 +140,7 @@ export default function RefundReturnPolicy() {
   
 
       {/* Footer */}
-      <footer className="mt-8 border-t bg-white">
-        <div className="mx-auto max-w-5xl px-5 py-6 text-sm text-gray-500">
-          © {year} NIKHID SOLUTIONS PRIVATE LIMITED. All rights reserved.
-        </div>
-      </footer>
+    
     </div>
   );
 }

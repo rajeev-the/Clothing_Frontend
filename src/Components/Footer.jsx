@@ -83,7 +83,7 @@ const Footer = () => {
         {/* Footer Text */}
         <div className="bg-[#E5C870] text-center p-4 rounded-2xl flex-[3]">
           <p className="text-black font-medium text-sm">
-            © 2035 by Jalwatrading. Powered and secured
+            © 2025 by Jalwatrading. Powered and secured
           </p>
         </div>
       </div>

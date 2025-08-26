@@ -74,9 +74,25 @@ const Signup = ({ setIsOpenLog, login }) => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
           />
+           <input
+            type="text"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+          
+           
             {
         reg &&(
           <>
+           <input
+            type="text"
+            placeholder="Enter your confirm  password"
+            value={confpassword}
+            onChange={(e) => setConfPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
             <input
             type="text"
             placeholder="Enter your firstName"
@@ -101,21 +117,8 @@ const Signup = ({ setIsOpenLog, login }) => {
             className="w-full border border-gray-300 p-2 rounded"
           />
           
-            <input
-            type="text"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-          />
-          
-            <input
-            type="text"
-            placeholder="Enter your confirm  password"
-            value={confpassword}
-            onChange={(e) => setConfPassword(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-          />
+         
+           
            <button
             
           onClick={() =>{
@@ -171,14 +174,22 @@ const Signup = ({ setIsOpenLog, login }) => {
           </button>
             </>
           )}
-
-          <button
+          {
+            !reg &&(
+              <>
+                <button
             type="submit"
             disabled={loading}
             className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
           >
             {loading ? 'Processing...' : step === 1 ? 'Send OTP' : 'Verify & Login'}
           </button>
+              
+              </>
+            )
+          }
+
+        
             <button
             
           onClick={() => setReg(reg=>!reg)}

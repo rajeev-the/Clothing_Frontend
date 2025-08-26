@@ -12,14 +12,14 @@ export default function ShippingPolicy() {
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Shipping Policy</h1>
             <p className="mt-1 text-sm text-gray-500">
-              NIKHID SOLUTIONS PRIVATE LIMITED • Website:&nbsp;
+              Jalwa Trading Pvt Ltd • Website:&nbsp;
               <a
-                href="https://nikhidsolutions.store/"
+                href="https://jalwatrading.store/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue-600 underline"
               >
-                nikhidsolutions.store
+                jalwatrading.store
               </a>
             </p>
           </div>
@@ -58,11 +58,7 @@ export default function ShippingPolicy() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-8 border-t bg-white">
-        <div className="mx-auto max-w-5xl px-5 py-6 text-sm text-gray-500">
-          © {year} NIKHID SOLUTIONS PRIVATE LIMITED. All rights reserved.
-        </div>
-      </footer>
+     
     </div>
 </>
   );

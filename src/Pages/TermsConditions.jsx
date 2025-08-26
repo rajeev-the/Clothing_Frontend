@@ -11,14 +11,14 @@ export default function TermsConditions() {
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Terms &amp; Conditions</h1>
             <p className="mt-1 text-sm text-gray-500">
-              NIKHID SOLUTIONS PRIVATE LIMITED • Website:&nbsp;
+              Jalwa Trading Pvt Ltd • Website:&nbsp;
               <a
-                href="https://nikhidsolutions.store/"
+                href="https://jalwatrading.store/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue-600 underline"
               >
-                nikhidsolutions.store
+               jalwatrading.store
               </a>
             </p>
           </div>
@@ -83,18 +83,18 @@ export default function TermsConditions() {
                 regulations, privacy policy and Terms of Use for access or usage of the domain name
                 <span className="whitespace-pre"> </span>
                 <a
-                  href="https://nikhidsolutions.store/"
+                  href="https://jalwatrading.store/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-blue-600 underline"
                 >
-                  https://nikhidsolutions.store/
+                  https://jalwatrading.store/
                 </a>
                 , including the related mobile site and mobile application (collectively, the “Platform”).
               </li>
 
               <li id="t3">
-                The Platform is owned by <strong>NIKHID SOLUTIONS PRIVATE LIMITED</strong>, a company
+                The Platform is owned by <strong>Jalwa Trading Pvt Ltd</strong>, a company
                 incorporated under the Companies Act, 1956, with its registered office at Village Begampur,
                 Landmark: Rajiv Nagar (Sumit Tailor), Begumpur, North West Delhi, Delhi, India – 110086
                 (hereinafter referred to as “Platform Owner”, “we”, “us”, or “our”).
@@ -209,11 +209,7 @@ export default function TermsConditions() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-8 border-t bg-white">
-        <div className="mx-auto max-w-5xl px-5 py-6 text-sm text-gray-500">
-          © {year} NIKHID SOLUTIONS PRIVATE LIMITED. All rights reserved.
-        </div>
-      </footer>
+    
     </div>
  
   );
