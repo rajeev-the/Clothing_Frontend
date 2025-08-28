@@ -3,7 +3,7 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaPaperPlane } from 'react-icons/f
 
 const Contact = () => {
   return (
-    <div className="min-h-screen  text-white">
+      <div className="min-h-screen  text-[#101828]">
       {/* Decorative elements */}
      
       
@@ -58,8 +58,8 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="flex flex-col justify-between">
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-[#E5C870]">Get in Touch</h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
+              <h2 className="text-3xl font-bold mb-6  text-gray-800">Get in Touch</h2>
+              <p className="text-gray-800 mb-8 leading-relaxed">
                 Have questions or want to work together? Fill out the form or contact us directly using 
                 the information below. We'll get back to you as soon as possible.
               </p>
@@ -69,7 +69,7 @@ const Contact = () => {
                   <FaMapMarkerAlt className="text-[#E5C870] text-xl mt-1 mr-4" />
                   <div>
                     <h3 className="font-bold text-lg mb-1">Our Location</h3>
-                    <p className="text-gray-400">123 Innovation Street<br />Tech City, TC 10001</p>
+                    <p className="text-gray-400"> PLOT NO 701 KH. NO. 80/10, GROUND FLOOR JAIN NAGAR TIRANTHAKAR NAGAR, Karala, North West Delhi, Delhi, Delhi, India,110081</p>
                   </div>
                 </div>
                 
@@ -77,7 +77,7 @@ const Contact = () => {
                   <FaPhone className="text-[#E5C870] text-xl mt-1 mr-4" />
                   <div>
                     <h3 className="font-bold text-lg mb-1">Phone</h3>
-                    <p className="text-gray-400">+1 (555) 123-4567</p>
+                    <p className="text-gray-800">91+ 9873389793</p>
                   </div>
                 </div>
                 
@@ -85,7 +85,7 @@ const Contact = () => {
                   <FaEnvelope className="text-[#E5C870] text-xl mt-1 mr-4" />
                   <div>
                     <h3 className="font-bold text-lg mb-1">Email</h3>
-                    <p className="text-gray-400">contact@example.com</p>
+                    <p className="text-gray-800">tradersjalwa@gmail.com</p>
                   </div>
                 </div>
               </div>
