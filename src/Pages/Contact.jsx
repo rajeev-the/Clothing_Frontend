@@ -77,7 +77,7 @@ const Contact = () => {
                   <FaPhone className="text-[#E5C870] text-xl mt-1 mr-4" />
                   <div>
                     <h3 className="font-bold text-lg mb-1">Phone</h3>
-                    <p className="text-gray-800">91+ 9873389793</p>
+                    <p className="text-gray-800">+91 9873389793</p>
                   </div>
                 </div>
                 

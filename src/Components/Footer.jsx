@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="bg-[#1B2559] p-6 rounded-2xl flex-[1] min-w-[250px]">
           <img src={logo} alt="DUCO ART" className="w-20" />
 
-          <p className="mb-1">Phone :91+ 9873389793</p>
+          <p className="mb-1">Phone :+91 9873389793</p>
           <p>Email : tradersjalwa@gmail.com</p>
            <p className='font-thin'>Address: PLOT NO 701 KH. NO. 80/10, GROUND FLOOR JAIN NAGAR TIRANTHAKAR NAGAR, Karala, North West Delhi, Delhi, Delhi, India,110081</p> 
         </div>
