@@ -14,7 +14,7 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
     pincode: '',
     country: 'India',
     landmark: '',
-    addressType: 'Home'
+    addressType: 'Home',
   });
 
   const [loading, setLoading] = useState(false);
@@ -24,11 +24,7 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    // Keep pincode numeric and max 6 digits
-
-
-
-
+    // Pincode: digits only, max 6
     if (name === 'pincode') {
       const onlyDigits = value.replace(/\D/g, '').slice(0, 6);
       setAddress((prev) => ({ ...prev, pincode: onlyDigits }));
@@ -36,7 +32,14 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
       return;
     }
 
-    setAddress({ ...address, [name]: value });
+    // Mobile number: digits only, max 10
+    if (name === 'mobileNumber') {
+      const onlyDigits = value.replace(/\D/g, '').slice(0, 10);
+      setAddress((prev) => ({ ...prev, mobileNumber: onlyDigits }));
+      return;
+    }
+
+    setAddress((prev) => ({ ...prev, [name]: value }));
   };
 
   // Auto-fetch City/State when pincode is 6 digits (debounced)
@@ -52,7 +55,6 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
         const res = await fetch(`https://api.postalpincode.in/pincode/${pc}`);
         const data = await res.json();
 
-        // API returns an array with Status and PostOffice
         const item = Array.isArray(data) ? data[0] : null;
 
         if (
@@ -90,41 +92,53 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
       cancelled = true;
       clearTimeout(t);
     };
-    
   }, [address.pincode]);
 
   const handleAddAddress = async () => {
     setError('');
-    const requiredFields = ['fullName', 'mobileNumber', 'houseNumber', 'street', 'city', 'state', 'pincode', 'country'];
+
+    // Required fields check
+    const requiredFields = [
+      'fullName',
+      'mobileNumber',
+      'houseNumber',
+      'street',
+      'city',
+      'state',
+      'pincode',
+      'country',
+    ];
     for (let field of requiredFields) {
       if (!address[field]) {
         setError(`Please fill the ${field}`);
         return;
       }
     }
+
+    // Pincode validation
     if (address.pincode.length !== 6) {
       setError('Please enter a valid 6-digit pincode');
       return;
     }
-    if (address.mobileNumber.length) {
-  const digitsOnly = value.replace(/\D/g, ""); // keep digits only
-  if (digitsOnly.length !== 10) {
-    toast.error("Mobile number should be 10 digits");
-    return;
-  }
-}
 
+    // Mobile number validation (digits only, 10)
+    const mobileDigits = String(address.mobileNumber || '').replace(/\D/g, '');
+    if (mobileDigits.length !== 10) {
+      toast.error('Mobile number should be 10 digits');
+      return;
+    }
 
     try {
       setLoading(true);
       const response = await addAddressToUser({
         userId: user._id,
-        address
+        address: { ...address, mobileNumber: mobileDigits }, // normalize before send
       });
 
       setUser(response.user);
       localStorage.setItem('user', JSON.stringify(response.user));
 
+      // Reset form
       setAddress({
         fullName: '',
         mobileNumber: '',
@@ -135,10 +149,12 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
         pincode: '',
         country: 'India',
         landmark: '',
-        addressType: 'Home'
+        addressType: 'Home',
       });
+
+      toast.success('Address added successfully');
     } catch (err) {
-      setError(err.message || 'Failed to add address');
+      setError(err?.message || 'Failed to add address');
     } finally {
       setLoading(false);
     }
@@ -147,9 +163,10 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
   return (
     <div className="w-full mt-6 border-t border-gray-700 pt-4">
       <h3 className="text-lg font-semibold mb-2 text-[#1B2559]">Saved Addresses</h3>
+
       {user?.address && user.address?.length > 0 ? (
         <ul className="space-y-2 text-sm">
-          {user?.address?.map((addr, index) => {
+          {user.address.map((addr, index) => {
             const isSelected = addresss === addr;
             return (
               <li
@@ -161,8 +178,13 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
                 <p className="font-semibold text-white">
                   {addr.fullName} ({addr.addressType})
                 </p>
-                <p>{addr.houseNumber}, {addr.street}, {addr.city}, {addr.state} - {addr.pincode}</p>
-                <p>{addr.country}{addr.landmark && `, Landmark: ${addr.landmark}`}</p>
+                <p>
+                  {addr.houseNumber}, {addr.street}, {addr.city}, {addr.state} - {addr.pincode}
+                </p>
+                <p>
+                  {addr.country}
+                  {addr.landmark && `, Landmark: ${addr.landmark}`}
+                </p>
                 <p>📞 {addr.mobileNumber}</p>
               </li>
             );
@@ -176,10 +198,34 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
       <h3 className="text-lg font-semibold text-[#1B2559] mt-6 mb-2">Add New Address</h3>
 
       <div className="grid grid-cols-2 gap-2 text-sm">
-        <input name="fullName" placeholder="Full Name" value={address.fullName} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
-        <input name="mobileNumber" placeholder="Mobile Number" value={address.mobileNumber} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
-        <input name="houseNumber" placeholder="House No." value={address.houseNumber} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
-        <input name="street" placeholder="Street" value={address.street} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
+        <input
+          name="fullName"
+          placeholder="Full Name"
+          value={address.fullName}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
+        <input
+          name="mobileNumber"
+          placeholder="Mobile Number"
+          value={address.mobileNumber}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
+        <input
+          name="houseNumber"
+          placeholder="House No."
+          value={address.houseNumber}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
+        <input
+          name="street"
+          placeholder="Street"
+          value={address.street}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
 
         {/* Pincode with status helper */}
         <div className="col-span-1">
@@ -198,13 +244,42 @@ const AddressManager = ({ addresss, setAddresss, user, setUser }) => {
           )}
         </div>
 
-        <input name="city" placeholder="City" value={address.city} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
-        <input name="state" placeholder="State" value={address.state} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
+        <input
+          name="city"
+          placeholder="City"
+          value={address.city}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
+        <input
+          name="state"
+          placeholder="State"
+          value={address.state}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
 
-        <input name="landmark" placeholder="Landmark (optional)" value={address.landmark} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded" />
-        <input name="country" placeholder="Country" value={address.country} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded col-span-2" />
+        <input
+          name="landmark"
+          placeholder="Landmark (optional)"
+          value={address.landmark}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded"
+        />
+        <input
+          name="country"
+          placeholder="Country"
+          value={address.country}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded col-span-2"
+        />
 
-        <select name="addressType" value={address.addressType} onChange={handleInputChange} className="p-2 bg-gray-900 border border-gray-600 text-white rounded col-span-2">
+        <select
+          name="addressType"
+          value={address.addressType}
+          onChange={handleInputChange}
+          className="p-2 bg-gray-900 border border-gray-600 text-white rounded col-span-2"
+        >
           <option>Home</option>
           <option>Office</option>
           <option>Other</option>
