@@ -35,7 +35,7 @@ const Prodcuts = () => {
       {/* Heading and product count */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold text-[#1B2559]">Filters</h1>
-        <span className="text-[#02066F]">82 Products</span>
+        <span className="text-[#02066F]">120 Products</span>
       </div>
 
       {/* Main content */}
