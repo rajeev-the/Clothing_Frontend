@@ -43,7 +43,7 @@ console.log(prodcuts)
       {/* Heading and product count */}
       <div className="flex  justify-between items-center mb-2">
        <span className="text-[#1B2559] text-2xl">{catogory_name}</span>
-        <span className="text-[#02066F] ">82 Products</span>
+        <span className="text-[#02066F] ">120 Products</span>
       </div>
 
       {/* Main content */}
