@@ -27,7 +27,7 @@ const Home = () => {
    
       <h1 className="text-2xl font-bold text-center mt-4">Welcome to Admin Dashboard</h1>
       <div className="max-w-4xl mx-auto mt-6 p-4">
-        {products?.map((p, i) => (
+        {products.map((p, i) => (
           <AdminCartItem
             key={i}
             product={{
