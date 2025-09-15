@@ -1,0 +1,136 @@
+import axios from 'axios';
+
+const API_BASE = 'https://cloth-backend-iwvn.onrender.com/'; // Set if you have a different baseURL
+
+export const fetchAllPrices = async () => {
+  const response = await axios.get(`${API_BASE}money/get_money`);
+  return response.data;
+};
+
+export const createOrUpdatePrice = async (data) => {
+  const response = await axios.post(`${API_BASE}money/create_location_price_increase`, data);
+  return response.data;
+};
+
+// src/Service/designAPI.js
+
+export const fetchPreviousDesigns = async (userId) => {
+  try {
+    const res = await fetch(`https://cloth-backend-iwvn.onrender.com/api/designs/user/${userId}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("Failed to fetch designs", err);
+    return [];
+  }
+};
+export const fetchPreviousDesignswithpreoduts = async (userId,productId) => {
+  try {
+    const res = await fetch(`https://cloth-backend-iwvn.onrender.com/api/designs/user/${userId}/${productId}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("Failed to fetch designs", err);
+    return [];
+  }
+};
+
+
+export const createDesign = async (payload) => {
+  try {
+    const res = await axios.post('https://cloth-backend-iwvn.onrender.com/api/designs', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error('Design creation failed:', err.response?.data || err.message);
+    return null;
+  }
+};
+
+export const getCategories = async () => {
+    try {
+      const res = await axios.get("https://cloth-backend-iwvn.onrender.com/category/getall");
+      return res.data.category || [];
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+      return null
+    }
+  };
+
+
+  export const getSubcategoriesByCategoryId = async (categoryId) => {
+  try {
+    const res = await axios.get(`https://cloth-backend-iwvn.onrender.com/subcategory/subcat/${categoryId}`);
+    return res.data.data || []; // Assuming controller sends { data: [...] }
+  } catch (err) {
+    console.error("Error fetching subcategories:", err);
+    return null;
+  }
+};
+
+  export const getproducts = async () => {
+  try {
+    const res = await axios.get(`https://cloth-backend-iwvn.onrender.com/products/get/`);
+    return res.data || []; // Assuming controller sends { data: [...] }
+  } catch (err) {
+    console.error("Error fetching subcategories:", err);
+    return null;
+  }
+};
+
+
+export const getproductssingle = async (id) => {
+  try {
+    const res = await axios.get(`https://cloth-backend-iwvn.onrender.com/products/get/${id}`);
+    return res.data || []; // Assuming controller sends { data: [...] }
+  } catch (err) {
+    console.error("Error fetching subcategories:", err);
+    return null;
+  }
+};
+
+
+
+
+
+export const getproductcategory = async (idsub) => {
+  try {
+    const res = await axios.get(`https://cloth-backend-iwvn.onrender.com/products/getsub/${idsub}`);
+    return res.data || []; // Assuming controller sends { data: [...] }
+  } catch (err) {
+    console.error("Error fetching subcategories:", err);
+    return null;
+  }
+};
+
+
+export const Updateproductcate = async (id,updates) => {
+  try {
+    const res = await axios.put(`https://cloth-backend-iwvn.onrender.com/products/update/${id}`, updates);
+    return res.data || []; // Assuming controller sends { data: [...] }
+  } catch (err) {
+    console.error("Error fetching subcategories:", err);
+    return null;
+  }
+};
+
+
+export const fetchOrdersByUser = async (userId) => {
+  try {
+    const res = await fetch(`https://cloth-backend-iwvn.onrender.com/api/order/user/${userId}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("Failed to fetch orders", err);
+    return [];
+  }
+};
+
+export async function adminLogin(userid, password) {
+  const { data } = await axios.post("https://cloth-backend-iwvn.onrender.com/api/admin/check", { userid, password });
+  return !!data?.ok;          // boolean true/false
+}
